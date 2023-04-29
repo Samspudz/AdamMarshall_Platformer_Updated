@@ -8,10 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public int score = 0;
     public int lives = 3;
 
-    // Start is called before the first frame update
     void Start()
     {
         if(instance == null)
@@ -27,14 +25,13 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (score == 5)
+        /*if (melons == 5)
         {
             SceneManager.LoadScene("VictoryScene");
-            score = 0;
-        }
+            melons = 0;
+        }*/
 
         if (lives == 0) 
         {

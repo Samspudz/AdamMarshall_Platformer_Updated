@@ -19,7 +19,7 @@ public class KillZoneScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Player"));
+        if (other.gameObject.tag == ("Player"))
         {
             Player.transform.position = RespawnPoint.position;
             GameManager.instance.lives--;

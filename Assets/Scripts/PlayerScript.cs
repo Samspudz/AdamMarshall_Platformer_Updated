@@ -5,8 +5,11 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private BoxCollider2D coll;
     private Animator anim;
     private SpriteRenderer sprite;
+
+    [SerializeField] private LayerMask jumpableGround;
 
     private enum MovementState {idle, running, jumping, falling}
 
@@ -17,6 +20,7 @@ public class PlayerScript : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        coll = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
     }
@@ -26,7 +30,7 @@ public class PlayerScript : MonoBehaviour
         dirX = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(dirX * speed, rb.velocity.y);
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
@@ -56,7 +60,7 @@ public class PlayerScript : MonoBehaviour
         {
             state = MovementState.jumping;
         }
-        else if (rb.velocity.y < -.1f)
+        else if (rb.velocity.y < -.01f)
         {
             state = MovementState.falling;
         }
@@ -64,12 +68,8 @@ public class PlayerScript : MonoBehaviour
         anim.SetInteger("state", (int)state);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private bool IsGrounded()
     {
-        if (other.gameObject.tag == ("Coin"))
-        {
-            GameManager.instance.score++;
-            Destroy(other.gameObject);
-        }
+        return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
 }
