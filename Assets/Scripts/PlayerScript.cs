@@ -17,6 +17,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float speed = 7f;
     [SerializeField] private float jumpForce = 10f;
 
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
