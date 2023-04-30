@@ -35,10 +35,12 @@ public class PlayerLife : MonoBehaviour
         anim.SetTrigger("death");
         GameManager.instance.lives--;
         deathSoundEffect.Play();
+        Respawn();
     }
 
-    private void Respawn()
+    IEnumerator Respawn()
     {
+        yield return new WaitForSeconds(2);
         rb.bodyType = RigidbodyType2D.Dynamic;
         anim.SetTrigger("spawn");
         Player.transform.position = RespawnPoint.position;
