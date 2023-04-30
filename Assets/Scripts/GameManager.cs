@@ -8,9 +8,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public int melons = 0;
     public int lives = 3;
 
-    void Start()
+    private void Start()
     {
         if(instance == null)
         {
@@ -25,13 +26,13 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    void Update()
+    private void Update()
     {
-        /*if (melons == 5)
+        if (melons == 5)
         {
             SceneManager.LoadScene("VictoryScene");
             melons = 0;
-        }*/
+        }
 
         if (lives == 0) 
         {

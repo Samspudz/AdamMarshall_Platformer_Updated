@@ -11,6 +11,10 @@ public class PlayerLife : MonoBehaviour
 
     [SerializeField] private Transform RespawnPoint;
     [SerializeField] private GameObject Player;
+
+    [SerializeField] private AudioSource deathSoundEffect;
+    [SerializeField] private AudioSource spawnSoundEffect;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -22,26 +26,22 @@ public class PlayerLife : MonoBehaviour
         if (collision.gameObject.tag == ("Trap"))
         {
             Die();
-            Spawn();
         }
-    }
-
-    private void Spawn()
-    {
-        rb.bodyType = RigidbodyType2D.Dynamic;
-        anim.SetTrigger("spawn");
     }
 
     private void Die()
     {
         rb.bodyType = RigidbodyType2D.Static;
         anim.SetTrigger("death");
-
+        GameManager.instance.lives--;
+        deathSoundEffect.Play();
     }
 
     private void Respawn()
     {
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        anim.SetTrigger("spawn");
         Player.transform.position = RespawnPoint.position;
-        GameManager.instance.lives--;
+        spawnSoundEffect.Play();
     }
 }

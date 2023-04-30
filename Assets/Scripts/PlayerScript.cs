@@ -17,6 +17,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float speed = 7f;
     [SerializeField] private float jumpForce = 10f;
 
+    [SerializeField] private AudioSource jumpSoundEffect;
+
 
     private void Start()
     {
@@ -34,6 +36,7 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            jumpSoundEffect.Play();
         }
 
         UpdateAnimationState();
