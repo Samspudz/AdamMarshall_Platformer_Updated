@@ -43,11 +43,17 @@ TagManager:
   - name: Background
     uniqueID: 3871712837
     locked: 0
+  - name: Hill Traps
+    uniqueID: 1523320235
+    locked: 0
+  - name: Traps
+    uniqueID: 2721240519
+    locked: 0
+  - name: Hill
+    uniqueID: 2562862467
+    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: ClimableTerrain
-    uniqueID: 2721240519
     locked: 0
   - name: FlatTerrain
     uniqueID: 2575927913

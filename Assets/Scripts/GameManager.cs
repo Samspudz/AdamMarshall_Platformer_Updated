@@ -28,12 +28,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (melons == 5)
-        {
-            SceneManager.LoadScene("VictoryScene");
-            melons = 0;
-        }
-
         if (lives == 0) 
         {
             SceneManager.LoadScene("GameOverScene");

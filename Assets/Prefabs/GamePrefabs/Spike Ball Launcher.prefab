@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c347cb0ff7d594eb669b632b35fc67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spikeBall: {fileID: 7895717389351483527, guid: 6d22fdd326717224fb8d68c2c1f5386f, type: 3}
+  spikeBall: {fileID: 5718142150929316550, guid: f35f06a2a1d7ee84aa1de9044b9dc5c2, type: 3}
   interval: 5
-  velocity: 17
+  velocity: 12
